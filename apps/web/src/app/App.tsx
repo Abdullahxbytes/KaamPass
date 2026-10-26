@@ -26,20 +26,6 @@ function AppShell() {
     signedIn && (view === 'home' || view === 'login') ? 'profile' : view
 
   function navigate(nextView: AppView) {
-    const startViewTransition = (
-      document as Document & {
-        startViewTransition?: (callback: () => void) => void
-      }
-    ).startViewTransition
-
-    if (
-      startViewTransition &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    ) {
-      startViewTransition(() => setView(nextView))
-      return
-    }
-
     setView(nextView)
   }
 

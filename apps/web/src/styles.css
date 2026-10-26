@@ -136,33 +136,6 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  ::view-transition-old(app-screen) {
-    animation: screen-leave 220ms ease-in both;
-  }
-  ::view-transition-new(app-screen) {
-    animation: screen-arrive 480ms var(--ease-out) both;
-  }
-}
-
-@keyframes screen-leave {
-  to {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-}
-
-@keyframes screen-arrive {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
