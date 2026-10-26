@@ -83,14 +83,24 @@ Local Supabase Studio is normally at `http://127.0.0.1:54323`. Use `npm run supa
 
 The local seed provides these fictional accounts. Their shared development-only password is `KaamPassDemo123!`.
 
-| Account  | Email                | Role                  |
-| -------- | -------------------- | --------------------- |
-| Ahmed    | `ahmed@example.test` | Electrician in Lahore |
-| Bilal    | `bilal@example.test` | Plumber in Rawalpindi |
-| Sana     | `sana@example.test`  | Painter in Islamabad  |
-| Ali Raza | `ali@example.test`   | Household employer    |
+| Account         | Email                 | Role                      |
+| --------------- | --------------------- | ------------------------- |
+| Ahmed           | `ahmed@example.test`  | Electrician in Lahore     |
+| Bilal           | `bilal@example.test`  | Plumber in Rawalpindi     |
+| Sana            | `sana@example.test`   | Painter in Islamabad      |
+| Ali Raza        | `ali@example.test`    | Household employer        |
+| Farah Khan      | `farah@example.test`  | Electrician in Lahore     |
+| Usman Tariq     | `usman@example.test`  | Electrician in Rawalpindi |
+| Ayesha Malik    | `ayesha@example.test` | Plumber in Islamabad      |
+| Hamza Iqbal     | `hamza@example.test`  | Plumber in Lahore         |
+| Mariam Noor     | `mariam@example.test` | Painter in Rawalpindi     |
+| Zain Abbas      | `zain@example.test`   | Painter in Islamabad      |
+| Nida Homes      | `nida@example.test`   | Household employer        |
+| Kamran Builders | `kamran@example.test` | Construction business     |
+| Hira Boutique   | `hira@example.test`   | Shop employer             |
+| Saad Workshop   | `saad@example.test`   | Workshop employer         |
 
-After `npm run db:reset`, the fictional seed also provides one open job request for each worker's profession, one verified historical job for each worker and fictional five-star feedback from Ali. This makes profiles, job matching, agreements, history and feedback useful as soon as the app starts. The seed is idempotent: running it again does not duplicate its fixed demo records.
+After `npm run db:reset`, the fictional seed provides 14 accounts, 15 open job requests, 15 matching bids, nine verified jobs and nine fictional feedback entries. This makes profiles, job matching, agreements, history and feedback useful as soon as the app starts. The seed is idempotent: running it again does not duplicate its fixed demo records.
 
 For the main demo:
 
@@ -133,7 +143,7 @@ Abdullah Mehmood is the project creator and sole contributor. He is responsible 
 - [x] Recognized MIT licence, copyright Abdullah Mehmood.
 - [x] Major frameworks and services acknowledged.
 - [x] Local functional prototype and repeatable fictional demo data.
-- [ ] Public GitHub repository URL, checked while logged out.
+- [x] Public GitHub repository: [Abdullahxbytes/KaamPass](https://github.com/Abdullahxbytes/KaamPass).
 - [x] Sole-contributor record.
 - [ ] Hosted demo URL or recorded demonstration.
 - [ ] Final review that no environment files, API keys or private data are committed.
