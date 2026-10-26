@@ -394,7 +394,14 @@
 .home-hero .button {
   min-height: 3.15rem;
   padding-inline: 1.35rem;
-  border-radius: 0.25rem;
+  border-radius: 0;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 0.75rem) 0,
+    100% 0.75rem,
+    100% 100%,
+    0 100%
+  );
 }
 .landing-illustration {
   position: relative;
@@ -403,8 +410,9 @@
   justify-content: space-between;
   padding: clamp(1.5rem, 3.5vw, 3rem);
   border: 1px solid var(--border);
-  border-radius: 0.25rem;
+  border-radius: 0;
   background: var(--surface-strong);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 3rem 100%, 0 calc(100% - 3rem));
 }
 .landing-illustration__brand {
   display: flex;
@@ -458,14 +466,16 @@
 }
 .landing-features article {
   min-height: 10rem;
-  padding: 1.3rem 1.25rem 1.5rem;
-  border-block-start: 2px solid var(--text);
+  min-width: 0;
+  padding: 1.5rem 1.25rem 1.75rem;
+  border-block-start: 0;
+  background: var(--surface);
 }
 .landing-features article:nth-child(2) {
-  border-color: var(--accent);
+  background: var(--surface-strong);
 }
 .landing-features article:nth-child(3) {
-  border-color: var(--olive);
+  background: color-mix(in srgb, var(--olive), var(--surface) 76%);
 }
 .landing-features h3 {
   max-width: 12ch;
