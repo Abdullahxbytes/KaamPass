@@ -216,6 +216,7 @@ function HomeView({
   return (
     <div className="home-layout">
       <section className="home-hero">
+        <p className="home-hero__kicker">KaamPass</p>
         <h1>
           {signedIn
             ? t('home.welcome', { name: profileName })
@@ -264,12 +265,20 @@ function HomeView({
         className="landing-illustration"
         aria-label={t('workspace.landingAside')}
       >
-        <img
-          src="/kaam-pass-logo.png"
-          alt=""
-          className="landing-illustration__logo"
-        />
-        <p>{t('workspace.landingAside')}</p>
+        <div className="landing-illustration__brand">
+          <img
+            src="/kaam-pass-logo.png"
+            alt=""
+            className="landing-illustration__logo"
+          />
+          <span>KaamPass</span>
+        </div>
+        <p className="landing-illustration__statement">
+          {t('workspace.landingAside')}
+        </p>
+        <div className="landing-illustration__mark" aria-hidden="true">
+          <span>KP</span>
+        </div>
       </aside>
       {!signedIn ? (
         <section

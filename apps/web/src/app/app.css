@@ -347,6 +347,168 @@
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   line-height: 1.08;
 }
+
+/* KaamPass is a work pass, not a generic marketplace. The landing screen uses
+   that physical-card idea as its distinctive visual anchor. */
+.site-header {
+  border-block-end-color: var(--border);
+}
+.site-header__inner {
+  width: min(100% - 3rem, 78rem);
+}
+.app-shell {
+  width: min(100% - 3rem, 78rem);
+}
+.home-layout {
+  grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.75fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  min-height: min(44rem, calc(100dvh - 9rem));
+  padding-block: clamp(1rem, 4vw, 3rem);
+}
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-hero__kicker {
+  margin: 0 0 1.5rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.home-hero h1 {
+  max-width: 11ch;
+  font-size: clamp(3.35rem, 7.2vw, 6.5rem);
+  letter-spacing: -0.065em;
+  line-height: 0.92;
+}
+.home-hero > p:not(.app-eyebrow):not(.home-hero__kicker) {
+  max-width: 39rem;
+  margin-block-start: 1.75rem;
+  color: var(--text);
+  font-size: clamp(1.05rem, 1.55vw, 1.3rem);
+}
+.home-hero .button-row {
+  margin-block-start: 2.4rem;
+}
+.home-hero .button {
+  min-height: 3.15rem;
+  padding-inline: 1.35rem;
+  border-radius: 0.25rem;
+}
+.landing-illustration {
+  position: relative;
+  min-height: clamp(26rem, 52vw, 37rem);
+  overflow: hidden;
+  justify-content: space-between;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  background: var(--surface-strong);
+}
+.landing-illustration__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.landing-illustration__logo {
+  width: 4.5rem;
+  height: auto;
+}
+.landing-illustration__statement {
+  position: relative;
+  z-index: 1;
+  max-width: 7ch;
+  margin: auto 0 0;
+  color: var(--text);
+  font-size: clamp(2.2rem, 4vw, 4.4rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+}
+.landing-illustration__mark {
+  position: absolute;
+  inset-inline-end: -0.09em;
+  inset-block-end: -0.23em;
+  color: color-mix(in srgb, var(--accent), transparent 18%);
+  font-size: clamp(10rem, 22vw, 20rem);
+  font-weight: 800;
+  letter-spacing: -0.15em;
+  line-height: 0.8;
+}
+.landing-features {
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.75fr) minmax(0, 1.25fr);
+  align-items: start;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: clamp(5rem, 10vw, 10rem) 1rem;
+  border: 0;
+}
+.landing-features h2 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(2rem, 3.4vw, 3.35rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+.landing-features > div {
+  gap: 0;
+}
+.landing-features article {
+  min-height: 10rem;
+  padding: 1.3rem 1.25rem 1.5rem;
+  border-block-start: 2px solid var(--text);
+}
+.landing-features article:nth-child(2) {
+  border-color: var(--accent);
+}
+.landing-features article:nth-child(3) {
+  border-color: var(--olive);
+}
+.landing-features h3 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: 1.2rem;
+}
+.landing-features article p {
+  max-width: 22ch;
+  margin-block-start: 1rem;
+  color: var(--muted);
+}
+.button {
+  border-radius: 0.25rem;
+}
+@media (max-width: 760px) {
+  .site-header__inner,
+  .app-shell {
+    width: min(100% - 2rem, 78rem);
+  }
+  .home-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-block-start: 0.5rem;
+  }
+  .home-hero h1 {
+    max-width: 10ch;
+    font-size: clamp(3rem, 14vw, 4.65rem);
+  }
+  .landing-illustration {
+    min-height: 21rem;
+  }
+  .landing-illustration__statement {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+  .landing-features {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-block-start: 5rem;
+  }
+  .landing-features > div {
+    grid-template-columns: 1fr;
+  }
+}
 .landing-illustration {
   min-height: 19rem;
   border: 0;
