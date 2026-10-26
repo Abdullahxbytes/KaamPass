@@ -9,6 +9,7 @@ import { LanguageSwitcher } from '../features/language/LanguageSwitcher'
 import { JobsDashboard } from '../features/jobs/JobsDashboard'
 import { ProfileDashboard } from '../features/profile/ProfileDashboard'
 import { PublicProfilePage } from '../features/profile/PublicProfilePage'
+import RubberSegment from '../components/RubberSegment'
 
 import './app.css'
 
@@ -45,6 +46,13 @@ function AppShell() {
   }
 
   const navItems = ['profile', 'jobs', 'agreements', 'feedback'] as const
+  const navigationSegments = navItems.map((item) => ({
+    value: item,
+    label:
+      item === 'agreements' || item === 'feedback'
+        ? t(`workspace.${item}`)
+        : t(`navigation.${item}`),
+  }))
 
   return (
     <div className="app-frame">
@@ -60,23 +68,25 @@ function AppShell() {
           </button>
           {signedIn ? (
             <nav className="desktop-nav" aria-label={t('navigation.primary')}>
-              {navItems.map((item) => (
-                <button
-                  key={item}
-                  type="button"
-                  className={
-                    currentView === item
-                      ? 'nav-button nav-button--active'
-                      : 'nav-button'
-                  }
-                  onClick={() => navigate(item)}
-                  aria-current={currentView === item ? 'page' : undefined}
-                >
-                  {item === 'agreements' || item === 'feedback'
-                    ? t(`workspace.${item}`)
-                    : t(`navigation.${item}`)}
-                </button>
-              ))}
+              <RubberSegment
+                aria-label={t('navigation.primary')}
+                activeTextColor="var(--text)"
+                draggable
+                equalSlots
+                glide={75}
+                inset={3}
+                items={navigationSegments}
+                onChange={(value: string) => navigate(value as AppView)}
+                radius={12}
+                size="md"
+                speed={1}
+                squash={3}
+                stretch={100}
+                textColor="var(--muted)"
+                thumbColor="var(--surface-strong)"
+                trackColor="transparent"
+                value={currentView}
+              />
             </nav>
           ) : (
             <div />

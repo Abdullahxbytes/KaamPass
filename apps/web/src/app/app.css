@@ -41,6 +41,13 @@
   align-items: center;
   gap: 0.2rem;
 }
+.desktop-nav .rubber-segment {
+  min-width: 23rem;
+  border: 1px solid color-mix(in srgb, var(--border), transparent 25%);
+}
+.desktop-nav .rubber-segment__item {
+  font-weight: 600;
+}
 .nav-button {
   min-height: 2.5rem;
   padding: 0.55rem 0.85rem;
