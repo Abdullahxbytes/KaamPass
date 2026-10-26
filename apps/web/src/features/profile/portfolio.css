@@ -1,0 +1,86 @@
+.portfolio {
+  margin-block-end: 2rem;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.portfolio h3 {
+  margin: 0;
+}
+.portfolio > p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+.portfolio-grid {
+  display: grid;
+  gap: 1rem;
+  margin-block: 1.25rem;
+}
+.portfolio-item {
+  display: grid;
+  grid-template-columns: minmax(7rem, 12rem) 1fr;
+  gap: 1rem;
+  padding-block: 1rem;
+  border-block-start: 1px solid var(--border);
+}
+.portfolio-item img,
+.portfolio-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+.portfolio-item__content,
+.portfolio-upload,
+.portfolio-item label,
+.portfolio-upload label {
+  display: grid;
+  gap: 0.6rem;
+}
+.portfolio-item input:not([type='checkbox']),
+.portfolio-upload input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--text);
+  background: var(--canvas);
+}
+.portfolio-item label.portfolio-check {
+  display: flex;
+  align-items: center;
+}
+.portfolio-check input {
+  accent-color: var(--accent);
+}
+.portfolio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.portfolio-upload {
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--border);
+}
+.portfolio-upload button {
+  justify-self: start;
+}
+.portfolio-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 1rem;
+}
+.portfolio-gallery figure {
+  margin: 0;
+}
+.portfolio-gallery figcaption {
+  margin-block-start: 0.5rem;
+}
+@media (max-width: 35rem) {
+  .portfolio-item {
+    grid-template-columns: 1fr;
+  }
+}

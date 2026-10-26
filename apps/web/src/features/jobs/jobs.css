@@ -1,0 +1,247 @@
+.jobs-dashboard {
+  display: grid;
+  gap: 2rem;
+}
+.direct-hire {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.direct-hire > summary {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  font-weight: 650;
+}
+.direct-hire > summary small {
+  color: var(--muted);
+  font-weight: 400;
+}
+.direct-hire[open] > summary {
+  border-block-end: 1px solid var(--border);
+}
+.direct-hire .agreement-form {
+  border: 0;
+}
+.jobs-heading {
+  max-width: 48rem;
+}
+.jobs-heading h1 {
+  max-width: 30ch;
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+[dir='rtl'] .jobs-heading h1 {
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+@media (max-width: 760px) {
+  [dir='rtl'] .jobs-heading h1 {
+    font-size: 2rem;
+    max-width: none;
+  }
+}
+.jobs-heading > p:last-child,
+.agreement-form__heading p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+.jobs-message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.agreement-form {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.agreement-form__heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.agreement-form__heading h2,
+.agreement-list-heading h2 {
+  margin: 0;
+}
+.agreement-form__heading p {
+  margin: 0.4rem 0 0;
+}
+.agreement-preview {
+  min-width: 9rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.65rem;
+  background: var(--surface-strong);
+  text-align: end;
+}
+.agreement-preview span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.agreement-preview strong {
+  display: block;
+  margin-block-start: 0.25rem;
+  font-size: 1.2rem;
+}
+.agreement-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.agreement-form label,
+.agreement-response label {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.agreement-form input,
+.agreement-form select,
+.agreement-form textarea,
+.agreement-response input,
+.agreement-response textarea {
+  width: 100%;
+  min-height: 2.9rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  background: var(--canvas);
+  color: var(--text);
+}
+.agreement-form textarea,
+.agreement-response textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+.agreement-form__wide {
+  grid-column: 1 / -1;
+}
+.agreement-list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-start: 1rem;
+}
+.agreement-list-heading span {
+  display: grid;
+  min-width: 2rem;
+  min-height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  font-weight: 700;
+}
+.agreement-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.agreement-card,
+.agreement-empty {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.agreement-card > header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.agreement-card h3,
+.agreement-card__meta {
+  margin: 0;
+}
+.agreement-card__meta {
+  margin-block-end: 0.3rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.agreement-status {
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.agreement-status--accepted {
+  color: var(--success);
+  background: color-mix(in srgb, var(--olive), transparent 70%);
+}
+.agreement-status--rejected {
+  color: var(--danger);
+  background: var(--danger-surface);
+}
+.agreement-description {
+  margin: 1rem 0;
+  line-height: 1.55;
+}
+.agreement-terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0;
+}
+.agreement-terms div {
+  padding: 0.7rem;
+  border-radius: 0.55rem;
+  background: var(--surface-strong);
+}
+.agreement-terms dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.agreement-terms dd {
+  margin: 0.2rem 0 0;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+.agreement-response {
+  display: grid;
+  gap: 1rem;
+  margin-block-start: 1rem;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--border);
+}
+.agreement-response .button-row {
+  margin: 0;
+}
+.agreement-rejection {
+  color: var(--danger);
+  line-height: 1.5;
+}
+.agreement-empty {
+  color: var(--muted);
+}
+.agreement-empty p {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .agreement-form__heading,
+  .jobs-message {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .agreement-preview {
+    text-align: start;
+  }
+  .agreement-form__grid,
+  .agreement-list {
+    grid-template-columns: 1fr;
+  }
+  .agreement-form__wide {
+    grid-column: auto;
+  }
+}

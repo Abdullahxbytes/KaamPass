@@ -1,0 +1,9 @@
+node_modules/
+.agents/skills/
+.taste-skill/
+**/dist/
+coverage/
+docs/
+palette/
+supabase/
+package-lock.json

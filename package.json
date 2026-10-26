@@ -1,0 +1,43 @@
+{
+  "name": "kaampass",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Digital work identity and verified employment history for informal workers.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.11.0 <23",
+    "npm": ">=10.9.0"
+  },
+  "scripts": {
+    "dev": "npm run build --workspace @kaampass/contracts && concurrently --kill-others-on-fail --names WEB,API --prefix-colors cyan,green \"npm run dev --workspace @kaampass/web\" \"npm run dev --workspace @kaampass/api\"",
+    "build": "npm run build --workspace @kaampass/contracts && npm run build --workspace @kaampass/api && npm run build --workspace @kaampass/web",
+    "typecheck": "npm run build --workspace @kaampass/contracts && npm run typecheck --workspace @kaampass/api && npm run typecheck --workspace @kaampass/web",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "test": "vitest run --passWithNoTests",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:status": "supabase status",
+    "db:reset": "supabase db reset",
+    "db:lint": "supabase db lint"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "concurrently": "9.2.1",
+    "eslint": "9.39.1",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-react-refresh": "0.4.24",
+    "globals": "16.5.0",
+    "prettier": "3.9.10",
+    "supabase": "2.122.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.2",
+    "vitest": "3.2.4"
+  }
+}

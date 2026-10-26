@@ -1,0 +1,33 @@
+.language-switcher {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 9.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+.language-switcher select {
+  width: 100%;
+  min-height: 2.6rem;
+  padding: 0.55rem 2rem 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  color: var(--text);
+  background: var(--surface);
+  font: inherit;
+}
+.language-switcher--compact {
+  min-width: 8.25rem;
+}
+.language-switcher [role='alert'] {
+  color: var(--danger);
+}
+[dir='rtl'] .language-switcher select {
+  padding-right: 0.7rem;
+  padding-left: 2rem;
+}
+@media (max-width: 480px) {
+  .language-switcher--compact {
+    min-width: 7.1rem;
+  }
+}
