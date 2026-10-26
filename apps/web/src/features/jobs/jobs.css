@@ -217,6 +217,27 @@
 .agreement-response .button-row {
   margin: 0;
 }
+.feedback-result {
+  display: grid;
+  gap: 0.55rem;
+}
+.feedback-result p {
+  margin: 0;
+  line-height: 1.55;
+}
+.feedback-stars {
+  display: inline-flex;
+  gap: 0.2rem;
+  align-items: center;
+  color: color-mix(in srgb, var(--text), transparent 72%);
+}
+.feedback-star {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.feedback-star--filled {
+  color: var(--accent);
+}
 .agreement-rejection {
   color: var(--danger);
   line-height: 1.5;

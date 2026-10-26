@@ -15,6 +15,10 @@ import {
 } from '@kaampass/contracts'
 
 import { apiClient, ApiClientError } from '../../lib/api/api-client'
+import {
+  ServiceAreaSuggestions,
+  serviceAreaListId,
+} from '../profile/ServiceAreaSuggestions'
 import './marketplace.css'
 
 interface PostDraft {
@@ -395,11 +399,13 @@ function PostJobForm({
           <input
             required
             maxLength={120}
+            list={serviceAreaListId}
             value={draft.serviceArea}
             onChange={(event) =>
               onDraft({ ...draft, serviceArea: event.target.value })
             }
           />
+          <ServiceAreaSuggestions />
         </label>
         <label>
           {t('marketplace.startDate')}

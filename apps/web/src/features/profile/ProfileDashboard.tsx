@@ -11,6 +11,10 @@ import {
   type WorkerProfile,
 } from '@kaampass/contracts'
 import { apiClient, ApiClientError } from '../../lib/api/api-client'
+import {
+  ServiceAreaSuggestions,
+  serviceAreaListId,
+} from './ServiceAreaSuggestions'
 import { WorkerHistory } from './WorkerHistory'
 import { PublicProfileSettings } from './PublicProfileSettings'
 import { Portfolio } from './Portfolio'
@@ -351,11 +355,13 @@ export function ProfileDashboard({
                 <input
                   required
                   maxLength={120}
+                  list={serviceAreaListId}
                   value={worker.service_area}
                   onChange={(event) =>
                     setWorker({ ...worker, service_area: event.target.value })
                   }
                 />
+                <ServiceAreaSuggestions />
               </label>
               <label>
                 {t('profile.experience')}

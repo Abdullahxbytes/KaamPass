@@ -73,6 +73,9 @@
   margin-inline: auto;
   padding-block: clamp(2rem, 5vw, 4.5rem);
 }
+.screen-stage {
+  view-transition-name: app-screen;
+}
 .page-context {
   margin: 0 0 1.75rem;
   color: var(--muted);
@@ -397,4 +400,78 @@
 }
 [lang='ur'] .auth-intro h1 {
   line-height: 1.6;
+}
+
+/* Motion follows the work: a page change keeps context, then the next screen
+   introduces its heading and first action in reading order. */
+@media (prefers-reduced-motion: no-preference) {
+  .screen-stage {
+    animation: screen-enter 520ms var(--ease-out) both;
+  }
+  .screen-stage h1 {
+    animation: text-enter 620ms var(--ease-expo) 40ms both;
+  }
+  .screen-stage h1 + p,
+  .screen-stage .home-hero > p,
+  .screen-stage .auth-intro > p,
+  .screen-stage .profile-panel > p,
+  .screen-stage .jobs-heading > p {
+    animation: text-enter 540ms var(--ease-out) 120ms both;
+  }
+  .screen-stage .button-row,
+  .screen-stage .account-actions,
+  .screen-stage .profile-summary__edit,
+  .screen-stage .auth-panel,
+  .screen-stage .agreement-list-heading,
+  .screen-stage .marketplace-actions {
+    animation: text-enter 500ms var(--ease-out) 200ms both;
+  }
+  .screen-stage .landing-illustration {
+    animation: panel-settle 780ms var(--ease-soft) 100ms both;
+  }
+  .screen-stage .landing-features article {
+    animation: text-enter 480ms var(--ease-out) both;
+  }
+  .screen-stage .landing-features article:nth-child(1) {
+    animation-delay: 180ms;
+  }
+  .screen-stage .landing-features article:nth-child(2) {
+    animation-delay: 250ms;
+  }
+  .screen-stage .landing-features article:nth-child(3) {
+    animation-delay: 320ms;
+  }
+}
+
+@keyframes screen-enter {
+  from {
+    opacity: 0.01;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes text-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes panel-settle {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

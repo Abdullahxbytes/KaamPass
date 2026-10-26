@@ -25,16 +25,34 @@ function AppShell() {
   const currentView =
     signedIn && (view === 'home' || view === 'login') ? 'profile' : view
 
+  function navigate(nextView: AppView) {
+    const startViewTransition = (
+      document as Document & {
+        startViewTransition?: (callback: () => void) => void
+      }
+    ).startViewTransition
+
+    if (
+      startViewTransition &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      startViewTransition(() => setView(nextView))
+      return
+    }
+
+    setView(nextView)
+  }
+
   function openAuth(mode: AuthMode) {
     setAuthMode(mode)
-    setView('login')
+    navigate('login')
   }
 
   async function handleSignOut() {
     setShellError(false)
     try {
       await signOut()
-      setView('home')
+      navigate('home')
     } catch {
       setShellError(true)
     }
@@ -49,7 +67,7 @@ function AppShell() {
           <button
             className="brand-button"
             type="button"
-            onClick={() => setView(signedIn ? 'profile' : 'home')}
+            onClick={() => navigate(signedIn ? 'profile' : 'home')}
             aria-label={t('navigation.goHome')}
           >
             <img src="/kaam-pass-logo.png" alt="" width="56" height="56" />
@@ -65,7 +83,7 @@ function AppShell() {
                       ? 'nav-button nav-button--active'
                       : 'nav-button'
                   }
-                  onClick={() => setView(item)}
+                  onClick={() => navigate(item)}
                   aria-current={currentView === item ? 'page' : undefined}
                 >
                   {item === 'agreements' || item === 'feedback'
@@ -106,54 +124,60 @@ function AppShell() {
       </header>
 
       <main className="app-shell">
-        {currentView === 'home' ? (
-          <HomeView
-            signedIn={signedIn}
-            profileName={signedIn ? state.profile.fullName : undefined}
-            onNavigate={setView}
-            onAuth={openAuth}
-          />
-        ) : null}
-        {currentView === 'profile' ? (
-          signedIn ? (
-            <ProfileDashboard
-              token={state.accessToken}
-              role={state.profile.role}
-              fullName={state.profile.fullName}
+        <div
+          className="screen-stage"
+          key={currentView}
+          data-screen={currentView}
+        >
+          {currentView === 'home' ? (
+            <HomeView
+              signedIn={signedIn}
+              profileName={signedIn ? state.profile.fullName : undefined}
+              onNavigate={navigate}
+              onAuth={openAuth}
             />
-          ) : (
-            <AccessGate
-              title={t('gates.profileTitle')}
-              body={t('gates.profileBody')}
-              onLogin={() => openAuth('login')}
+          ) : null}
+          {currentView === 'profile' ? (
+            signedIn ? (
+              <ProfileDashboard
+                token={state.accessToken}
+                role={state.profile.role}
+                fullName={state.profile.fullName}
+              />
+            ) : (
+              <AccessGate
+                title={t('gates.profileTitle')}
+                body={t('gates.profileBody')}
+                onLogin={() => openAuth('login')}
+              />
+            )
+          ) : null}
+          {currentView === 'jobs' ||
+          currentView === 'agreements' ||
+          currentView === 'feedback' ? (
+            signedIn ? (
+              <JobsDashboard
+                token={state.accessToken}
+                role={state.profile.role}
+                onProfile={() => navigate('profile')}
+                section={currentView}
+              />
+            ) : (
+              <AccessGate
+                title={t('gates.jobsTitle')}
+                body={t('gates.jobsBody')}
+                onLogin={() => openAuth('login')}
+              />
+            )
+          ) : null}
+          {currentView === 'login' ? (
+            <AuthPanel
+              key={authMode}
+              initialMode={authMode}
+              onNavigate={navigate}
             />
-          )
-        ) : null}
-        {currentView === 'jobs' ||
-        currentView === 'agreements' ||
-        currentView === 'feedback' ? (
-          signedIn ? (
-            <JobsDashboard
-              token={state.accessToken}
-              role={state.profile.role}
-              onProfile={() => setView('profile')}
-              section={currentView}
-            />
-          ) : (
-            <AccessGate
-              title={t('gates.jobsTitle')}
-              body={t('gates.jobsBody')}
-              onLogin={() => openAuth('login')}
-            />
-          )
-        ) : null}
-        {currentView === 'login' ? (
-          <AuthPanel
-            key={authMode}
-            initialMode={authMode}
-            onNavigate={setView}
-          />
-        ) : null}
+          ) : null}
+        </div>
       </main>
 
       {signedIn ? (
@@ -167,7 +191,7 @@ function AppShell() {
                   ? 'mobile-nav__button mobile-nav__button--active'
                   : 'mobile-nav__button'
               }
-              onClick={() => setView(item)}
+              onClick={() => navigate(item)}
               aria-current={currentView === item ? 'page' : undefined}
             >
               {item === 'agreements' || item === 'feedback'

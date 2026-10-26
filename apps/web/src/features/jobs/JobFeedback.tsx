@@ -12,6 +12,28 @@ const responseSchema = z.object({
     .nullable(),
 })
 
+function RatingStars({ rating, label }: { rating: number; label: string }) {
+  return (
+    <span className="feedback-stars" aria-label={label} role="img">
+      {Array.from({ length: 5 }, (_, index) => (
+        <svg
+          aria-hidden="true"
+          className={
+            index < rating
+              ? 'feedback-star feedback-star--filled'
+              : 'feedback-star'
+          }
+          fill="currentColor"
+          key={index}
+          viewBox="0 0 24 24"
+        >
+          <path d="m12 2.7 2.86 5.79 6.39.93-4.63 4.51 1.09 6.37L12 17.3l-5.71 3 1.09-6.37-4.63-4.51 6.39-.93L12 2.7Z" />
+        </svg>
+      ))}
+    </span>
+  )
+}
+
 export function JobFeedback({
   jobId,
   token,
@@ -89,9 +111,13 @@ export function JobFeedback({
         <p role="status">{t('feedback.loading')}</p>
       ) : null}
       {feedback ? (
-        <p>
-          {t('feedback.saved', { rating: feedback.rating })} {feedback.comment}
-        </p>
+        <div className="feedback-result">
+          <RatingStars
+            label={t('feedback.saved', { rating: feedback.rating })}
+            rating={feedback.rating}
+          />
+          {feedback.comment ? <p>{feedback.comment}</p> : null}
+        </div>
       ) : null}
       {status === 'ready' && !feedback && !canSubmit ? (
         <p>{t('feedback.empty')}</p>

@@ -19,6 +19,9 @@
   --success: #315f43;
   --radius: 0.875rem;
   --shadow: 0 18px 48px rgb(72 86 65 / 0.1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -90,15 +93,16 @@ button {
   line-height: 1.1;
   cursor: pointer;
   transition:
-    transform 160ms ease,
-    background-color 160ms ease,
-    border-color 160ms ease;
+    transform 140ms var(--ease-out),
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
 }
 .button:hover:not(:disabled) {
   transform: translateY(-1px);
 }
 .button:active:not(:disabled) {
-  transform: translateY(0);
+  transform: scale(0.98);
 }
 .button:disabled {
   opacity: 0.62;
@@ -130,6 +134,33 @@ select:focus-visible,
 textarea:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--accent), transparent 25%);
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(app-screen) {
+    animation: screen-leave 220ms ease-in both;
+  }
+  ::view-transition-new(app-screen) {
+    animation: screen-arrive 480ms var(--ease-out) both;
+  }
+}
+
+@keyframes screen-leave {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes screen-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

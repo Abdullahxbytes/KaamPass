@@ -9,6 +9,10 @@ import {
 } from '@kaampass/contracts'
 
 import { getCurrentLanguage } from '../../i18n/i18n'
+import {
+  ServiceAreaSuggestions,
+  serviceAreaListId,
+} from '../profile/ServiceAreaSuggestions'
 import { mapAuthError, type AuthMessage, type AuthMode } from './auth-errors'
 import { useAuth } from './auth-context'
 import './auth-panel.css'
@@ -260,9 +264,11 @@ export function AuthPanel({
                     <input
                       required
                       maxLength={120}
+                      list={serviceAreaListId}
                       value={serviceArea}
                       onChange={(event) => setServiceArea(event.target.value)}
                     />
+                    <ServiceAreaSuggestions />
                   </label>
                 </>
               ) : null}
